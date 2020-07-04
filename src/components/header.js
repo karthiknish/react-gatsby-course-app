@@ -35,7 +35,7 @@ class Header extends React.Component {
       description,
       amount,
     }
-    fetch("http://localhost:9000/stripe-charge", {
+    fetch("https://react-gatsby-course.netlify.app/stripe-charge", {
       method: "POST",
       body: JSON.stringify(bodyObject),
     })
