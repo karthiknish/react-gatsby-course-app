@@ -1,11 +1,20 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Design code`,
+    description: `Fun to learn modern coding courses for designers including React, Different styling methods, static data with JSON, GraphQL, and contemporary content management`,
+    keywords:
+      "courses, react, framer x, designers, components, graphql, contentful",
     author: `@gatsbyjs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: "nql3d04airsl",
+        accessToken: "ILoKvZKN-47xfpLwpZ9D7atQrJHpIMwnMZ4wjDEkUnE",
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

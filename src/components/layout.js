@@ -8,8 +8,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+// import Helmet from "react-helmet"
 import Header from "./header"
+import Footer from "../components/Footer"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -18,6 +19,16 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          description
+          keywords
+        }
+      }
+      allContentfulLink(sort: { fields: [createdAt], order: ASC }) {
+        edges {
+          node {
+            title
+            url
+          }
         }
       }
     }
@@ -25,21 +36,16 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <main>
+        <Header />
+        {children}
+
+        <Footer data={data}>
+          Backgrounds made in Cinema 4D,iOs app in Swift,site in React.
+          <a href="mailto:karthik.nishanth06@gmail.com">Email us </a>to ask
+          anything,© 2020
+        </Footer>
+      </main>
     </>
   )
 }
